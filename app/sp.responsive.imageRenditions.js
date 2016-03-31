@@ -40,20 +40,22 @@ var SPResponsiveImageRenditions;
                 return append;
             };
             this.applyRenditionIds = function (selector, renditionOpts) {
+                var module = _this;
                 var element = $(selector);
                 element.find('img').each(function (elemIndex, elemImg) {
                     var imageElement = $(elemImg);
                     var imageSource = imageElement.attr('src');
-                    imageSource = this.removeParams(imageSource);
-                    imageSource = imageSource + this.getRenditionQuery(renditionOpts);
+                    imageSource = module.removeParams(imageSource);
+                    imageSource = imageSource + module.getRenditionQuery(renditionOpts);
                     imageElement.attr('src', imageSource);
                     imageElement.attr('style', '');
                 });
             };
             this.init = function () {
                 try {
-                    $.each(_this.config.wrapperSelectors, function (key, data) {
-                        this.applyRenditionIds(data, this.config.renditionIds);
+                    var module = _this;
+                    $.each(module.config.wrapperSelectors, function (key, data) {
+                        this.applyRenditionIds(data, module.config.renditionIds);
                     });
                 }
                 catch (e) {
