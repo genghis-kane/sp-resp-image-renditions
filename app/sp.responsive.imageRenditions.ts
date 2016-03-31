@@ -62,7 +62,7 @@ module SPResponsiveImageRenditions {
                     imageSource = module.removeParams(imageSource);
                     imageSource = imageSource + module.getRenditionQuery(renditionOpts);
                     imageElement.attr('src', imageSource);
-                    imageElement.attr('style', '');
+                    imageElement.attr('style', 'max-width:100%');
                 });
             }
             
@@ -70,7 +70,7 @@ module SPResponsiveImageRenditions {
                 try {
                     var module = this;
                     $.each(module.config.wrapperSelectors, function (key, data) {
-                        this.applyRenditionIds(data, module.config.renditionIds);
+                        module.applyRenditionIds(data, module.config.renditionIds);
                     });
                 }
                 catch (e) {
